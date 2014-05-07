@@ -15,3 +15,5 @@ distclean: clean
 
 clean:
 	rm -rf out release
+
+.PHONY: clean distclean dev
