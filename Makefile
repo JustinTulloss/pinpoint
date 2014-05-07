@@ -1,3 +1,6 @@
 dev:
 	lein cljsbuild auto &
-	python -m SimpleHTTPServer
+	http-server
+
+clean:
+	rm -rf out
