@@ -1,3 +1,5 @@
 *.sw[co]
 target
 out
+release
+react
