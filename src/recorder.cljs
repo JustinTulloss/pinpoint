@@ -25,6 +25,9 @@
       (recur))))
   (om/root
     (fn [app-state owner]
-      (om/build recorder-button app-state {:init-state {:record record-chan}}))
+      (cond
+       (aget js/navigator "geolocation") (om/build recorder-button app-state {
+         :init-state {:record record-chan}})
+       :else (dom/h1 nil #js {:text "Please use a browser that supports geolocation"})))
     app-state
     {:target (. js/document (getElementById "my-app"))}))
