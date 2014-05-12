@@ -1,19 +1,17 @@
-dev:
-	lein cljsbuild auto dev &
+JSXC=node_modules/react-tools/bin/jsx
+
+react-0.10.0.zip:
+	curl http://facebook.github.io/react/downloads/react-0.10.0.zip > $@
+
+react-0.10.0: react-0.10.0.zip
+	unzip react-0.10.0.zip
+
+dev: react-0.10.0
+	$(JSXC) --watch src/ build/ &
 	http-server
 
-react:
-	mkdir -p react/externs
-	curl -L http://fb.me/react-0.10.0.min.js > react/react.min.js
-	curl -L https://raw.githubusercontent.com/steida/este-library/master/externs/react.js > react/externs/react.js
-
-release: react
-	lein cljsbuild once release
-
-distclean: clean
+distclean:
 	git clean -xfd
 
-clean:
-	rm -rf out release
-
+.INTERMEDIATE: react-0.10.0.zip
 .PHONY: clean distclean dev

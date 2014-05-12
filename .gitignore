@@ -1,5 +1,4 @@
 *.sw[co]
-target
-out
-release
-react
+react*
+build
+node_modules
