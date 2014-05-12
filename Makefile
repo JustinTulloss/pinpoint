@@ -1,5 +1,5 @@
 dev:
-	lein cljsbuild auto &
+	lein cljsbuild auto dev &
 	http-server
 
 react:
